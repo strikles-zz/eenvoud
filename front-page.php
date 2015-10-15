@@ -7,8 +7,6 @@ the_post();
 
 <div class="container-fluid">
 
-	<div class="background"></div>
-
 	<!-- header -->
 	<div class="row">
 		<div class="col-sm-12 main-content text-center">

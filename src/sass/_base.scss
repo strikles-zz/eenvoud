@@ -5,6 +5,10 @@
   transform: translateY(-50%);
 }
 
+@function min($a, $b) {
+  @return if($a > $b, $b, $a);
+}
+
 .text-bold {
   font-weight: 700;
 }
