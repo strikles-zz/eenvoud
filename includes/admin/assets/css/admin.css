@@ -1,0 +1,9 @@
+#import-messages .timestamp {
+	display: inline-block;
+	width: 60px;
+}
+
+#import-messages .uptime {
+	display: inline-block;
+	width: 50px;
+}

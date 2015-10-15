@@ -1,0 +1,59 @@
+/* Mixin */
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+
+html {
+  font-size: 62.5%;
+  background-color: $white;
+}
+
+body {
+	font-size: 2rem;
+	line-height: 3rem;
+}
+
+.top-gap {
+  padding-top: 30px;
+}
+
+//=========  WP login logo  ========== NOTE: should go to admin css*/
+.login h1 a {
+  background: url('../img/login-logo.png') no-repeat top center;
+  display: block;
+  height: 6.7rem;
+  overflow: hidden;
+  padding-bottom: 15px;
+  text-indent: -9999px;
+  width: 32.6rem;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: Oswald;
+	text-transform: uppercase;
+	font-weight: bold;
+  position: relative;
+  display: inline-block;
+}
+
+h1:before, .h1:before, h2:before, .h2:before, h3:before, .h3:before, h4:before, .h4:before {
+    content: '';
+    position: absolute;
+    width: 33.3%;
+    height: 1px;
+    bottom: -10px;
+    left: 33.3%;
+    border-bottom: 3px solid $dark-orange;
+}
+
