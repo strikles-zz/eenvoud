@@ -1,13 +1,18 @@
-//@import 'font-awesome/font-awesome';
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
 @import 'variables';
+@import 'helpers';
 @import 'base';
 
 @import 'parts/nav';
+@import 'parts/header';
 @import 'parts/footer';
 
 @import 'pages/home';
+@import 'pages/datavisualization';
+@import 'pages/mobile';
+@import 'pages/webapps';
+@import 'pages/websites';
 
 
 

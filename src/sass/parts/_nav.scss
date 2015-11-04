@@ -1,68 +1,238 @@
-.navbar {
-    position: absolute;
+.eenvoudmenu {
+    background: rgba(254, 134, 20, 0.94);
+    position: fixed;
+    opacity:0;
     top: 0;
-    left: 0;
     right: 0;
-    z-index: 100;
+    left: 0;
+    bottom:0;
+    z-index: 9999;
 
-    .icon-bar {
-        background-color: $white;
+    &.collapsing {
+        transition: height 0.01s;
     }
 
-    .navbar-header {
-        float: none;
-    }
+    ul {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -25rem;
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+        height: 50rem;
+        list-style: none;
 
-    .navbar-toggle {
-        display: block;
-    }
+        .menu-item {
+            line-height: 1.42857;
 
-    .navbar-brand {
-        color: $white;
-        text-decoration: none;
-        padding: 5px 15px;
-        font-family: Oswald;
+            a {
+                font-size: 4.6rem;
+                color: $lightgrey;
+                font-family: 'Oswald';
+                text-transform: uppercase;
 
-        img {
-            height: 100%;
-            width: auto;
-            display: inline-block;
-        }
-    }
+                &:hover{
+                    text-decoration: none;
+                    background-color: $redish;
+                }
 
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 1px 0 1px 0 rgba(255,255,255,0.1);
-        background: rgba(120, 128, 141, 0.5);
-        background-repeat: no-repeat;
-        background-size: cover;
-
-		&.collapse {
-        	display: none !important;
-
-            &.in {
-                display: block !important;
+                &:focus {
+                    text-decoration: none;
+                    background-color: transparent;
+                }
             }
         }
+        /*=====================================
+        =            Media Queries            =
+        =====================================*/
+        @media (max-width: $screen-md) {
+            margin-top: -20rem;
+            height: 40rem;
+            .menu-item {
+                a {
+                    font-size: 3.6rem;
+                }
+            }
+        }
+
+        @media (max-width: $screen-sm) {
+            margin-top: -15rem;
+            height: 30rem;
+            .menu-item {
+                a {
+                    font-size: 2.4rem;
+                }
+            }
+        }
+
+        @media (max-width: $screen-xs) {
+            margin-top: -12.5rem;
+            height: 25rem;
+            .menu-item {
+                a {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        /*-----  End of Media Queries  ------*/
+
+
     }
+}
 
-    .navbar-nav {
-        float: none!important;
-        margin: 7.5px -15px;
+.navigation-button-container  {
+    position: fixed;
+    z-index: 10000;
+    right: 1.5rem;
+    top: 1.5rem;
+
+    @media (max-width: $screen-sm) {
+        right: 0.5rem;
+        top: 0.5rem;
     }
+}
 
-    .navbar-nav>li {
-        float: none;
-    }
 
-    .navbar-nav>li>a {
-        color: $white;
-        text-decoration: none;
-        padding-top: 10px;
-        padding-bottom: 10px;
 
-        &:hover, &:active {
-            background: rgba(61, 79, 95, 0.5);
+/*======================================
+=            Navbtn styling            =
+======================================*/
+
+
+/* =============================================================================
+MENU TOGGLE SWITCHES
+============================================================================= */
+
+// vars
+
+$button-width: 60px;
+$button-height: 54px;
+$bar-thickness: 3px;
+$button-pad: 18px;
+$button-trans-delay: 0.3s;
+
+/**
+* Toggle Switch Globals
+*
+* All switches should take on the class `cmn-toggle-switch` as well as their
+* variant that will give them unique properties. This class is an overview
+* class that acts as a reset for all versions of the icon.
+*/
+
+.cmn-toggle-switch {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: $button-width;
+    height: $button-height;
+    font-size: 0;
+    text-indent: -9999px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: 0;
+    cursor: pointer;
+    transition: background $button-trans-delay;
+
+    span {
+        display: block;
+        position: absolute;
+        top: ($button-height / 2) - ($bar-thickness / 2);
+        left: $button-pad;
+        right: $button-pad;
+        height: $bar-thickness;
+        background: rgb(0,0,0);
+
+        &.white{
+            background-color:  $lightgrey;
+        }
+
+        &::before {
+            top: -(($button-height / 2) - ($bar-thickness / 2) - $button-pad);
+        }
+
+        &::after {
+            bottom: -(($button-height / 2) - ($bar-thickness / 2) - $button-pad);
         }
     }
 }
+
+.cmn-toggle-switch:focus {
+    outline: none;
+}
+
+.cmn-toggle-switch span::before, .cmn-toggle-switch span::after {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: $bar-thickness;
+    background-color: rgb(0,0,0);
+    content: '';
+}
+
+.cmn-toggle-switch .white::before, .cmn-toggle-switch .white::after {
+    background-color:  $lightgrey;
+}
+
+
+
+/**
+* Style 2
+*
+* Hamburger to "x" (htx). Takes on a hamburger shape, bars slide
+* down to center and transform into an "x".
+*/
+
+.cmn-toggle-switch-htx {
+    background-color: transparent;
+
+    span {
+        transition: background 0s $button-trans-delay;
+
+        &::before, &::after {
+            transition-duration: $button-trans-delay, $button-trans-delay;
+            transition-delay: $button-trans-delay, 0s;
+        }
+
+        &::before {
+            transition-property: top, transform;
+        }
+
+        &::after {
+            transition-property: bottom, transform;
+        }
+    }
+
+    /* active state, i.e. menu open */
+    &.active {
+        background-color:  transparent;
+
+        span {
+            background: none;
+
+            &::before {
+                top: 0;
+                transform: rotate(45deg);
+                background-color:  $white;
+            }
+
+            &::after {
+                bottom: 0;
+                transform: rotate(-45deg);
+                background-color:  $white;
+            }
+
+            &::before, &::after {
+                transition-delay: 0s, $button-trans-delay;
+            }
+        }
+    }
+}
+/*-----  End of Navbtn styling  ------*/

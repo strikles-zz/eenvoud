@@ -26,6 +26,13 @@ function remove_author_pages_link( $content ) {
 	return get_option( 'home' );
 }
 
+require_once('wp_bootstrap_navwalker.php');
+function eenvoud_register_theme_menu() {
+    register_nav_menu(array(
+      'navigation'  => __(' Navigation'),
+    ));
+}
+
+add_action( 'init', 'eenvoud_register_theme_menu' );
 add_action( 'template_redirect', 'remove_author_pages_page' );
 add_filter( 'author_link', 'remove_author_pages_link' );
-

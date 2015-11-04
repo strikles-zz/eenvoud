@@ -45,7 +45,9 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.4",
+    "font-awesome": "^4.4.0",
     "gsap": "~1.16.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "velocity-animate": "^1.2.3"
   }
 }

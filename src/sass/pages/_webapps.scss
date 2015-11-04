@@ -1,0 +1,35 @@
+.page-template-template-webapplications {
+
+	.main-content {
+		background: url('../img/webapplications/header.png') center center repeat, url('../img/header-background.png') bottom left repeat;
+		background-size: cover, contain;
+
+		position: relative;
+
+		@media (min-width: $screen-sm) {
+			height: 70vh;
+			min-height: 600px;
+
+			.main-wrapper {
+			    position: relative;
+			    height: 30vh;
+			    min-height: 300px;
+
+			    .main-title {
+			    	position: absolute;
+			    	bottom: 0;
+			    	left: 0;
+			    	right: 0;
+			    }
+
+			    .main-txt {
+			    	position: absolute;
+			    	top: 0;
+			    	left: 0;
+			    	right: 0;
+			    }
+			}
+		}
+	}
+
+}

@@ -1,0 +1,44 @@
+header {
+	.eenvoud-logo-container {
+		position:absolute;
+		top:0;
+		left:0;
+		z-index: 10001;
+		height: 6rem;
+		margin: 1.5rem;
+
+		@media(max-width: $screen-lg) {
+			height: 6rem;
+		}
+		@media(max-width: $screen-md) {
+			height: 4rem;
+		}
+		@media(max-width: $screen-sm) {
+			display:none;
+		}
+
+		.logo{
+			width:  50px;
+			height: 100%;
+			background: url('../img/logo.png');
+			float: left;
+
+			@media(max-width: $screen-sm) {
+				// to save some of the data :)
+				background:transparent;
+			}
+
+			background-position: left top;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+
+		.logo-txt {
+			float: left;
+			color: $white;
+			text-transform: uppercase;
+			line-height: 55px;
+			font-family: 'Oswald';
+		}
+	}
+}
