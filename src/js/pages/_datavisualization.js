@@ -54,7 +54,6 @@ Numbers.prototype = {
             var interval = (Math.random() * 7000) + 777;
             var blink = function() {
                 $el.fadeOut(interval, function() {
-                    $el.html(self.generateSingleNumber());
                     self.positionNumber($el);
                     $el.fadeIn(interval);
                 });
@@ -67,8 +66,8 @@ Numbers.prototype = {
     },
 
     generateSingleNumber: function() {
-        var num = ((Math.random() * 200) - 100).toFixed(2);
-        return (num < 0 ? '' : '+')+num;
+        var num = ((Math.random() * 200) - 100);
+        return (num < 0 ? '' : '+')+num.toFixed(2);
     },
 
     getNumberColor: function(num) {
