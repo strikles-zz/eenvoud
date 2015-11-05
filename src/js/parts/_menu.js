@@ -1,33 +1,31 @@
 'use strict';
 
-var	$ = require('jQuery');
+var $ = window.jQuery;
+var Menu = function() {
 
-var Menu = function(options) {
+    this.defaults = {
+        debug:          false,
+        initialized:    false
+    };
 
-	var defaults = {
-		debug:			false,
-		initialized: 	false, 
-	};
+    this.toggles = undefined;
 
-	this.options = $.extend(true, defaults, options);
-	this.toggles = undefined;
-
-	return this;
+    return this;
 };
 
 
 Menu.prototype = {
 
-	init: function() {
-		var self = this;
-		self.toggles = document.querySelectorAll(".cmn-toggle-switch");
-		self.initialized = true;
+    init: function() {
+        var self = this;
+        self.toggles = document.querySelectorAll(".cmn-toggle-switch");
+        self.initialized = true;
 
-		return self;
-	},
+        return self;
+    },
 
     toggleHandler: function(toggle) {
-    	var self = this;
+        var self = this;
 
         toggle.addEventListener( "click", function(e) {
             console.log('showing menu');
@@ -42,16 +40,16 @@ Menu.prototype = {
         });
     },
 
-	start: function() {
-		var self = this;
+    start: function() {
+        var self = this;
 
-		self.init();
-	    for (var i = self.toggles.length - 1; i >= 0; i--) {
-	        var toggle = self.toggles[i];
-	        self.toggleHandler(toggle);
-	    }
-	}
+        self.init();
+        for (var i = self.toggles.length - 1; i >= 0; i--) {
+            var toggle = self.toggles[i];
+            self.toggleHandler(toggle);
+        }
+    }
 
 };
 
-module.exports = Menu;
+module.exports = new Menu();

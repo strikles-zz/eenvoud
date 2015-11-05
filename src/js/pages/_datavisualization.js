@@ -1,16 +1,13 @@
 'use strict';
 
-var	$ = require('jQuery');
-
+var $ = window.jQuery;
 var Numbers = function(options) {
 
-	var defaults = {
-		debug:			false,
-		initialized: 	false
-	};
+    this.defaults = {
+        debug:          false,
+        initialized:    false
+    };
 
-	this.options = $.extend(true, defaults, options);
-	
     this.numbers = {
         large: {
             total: 19
@@ -27,36 +24,51 @@ var Numbers = function(options) {
     this.availableWidth;
     this.availableHeight;
 
-	return this;
+    return this;
 };
 
 
 Numbers.prototype = {
 
-	init: function() {
-		var self = this;
-		self.initialized = true;
+    init: function() {
+        var self = this;
+        self.initialized = true;
 
-		self.generateNumbers();
+        self.generateNumbers();
 
         self.availableWidth = $('.main-content').width();
         self.availableHeight = $('.main-content').height();
 
-		return self;
+        return self;
 
-	},
+    },
 
-	start: function() {
-		var self = this;
+    start: function() {
+        var self = this;
 
-		self.init();
-	    var $numbers = $(".number");
-	    $numbers.each(self.animateNumbers);
-	    $(".numbers-wrapper").fadeTo(1000, 0.13); 
-	},
+        self.init();
+        var $numbers = $(".number");
+
+        var animateNumbers = function(ndx, el) {
+            var $el = $(this);
+            var interval = (Math.random() * 7000) + 777;
+            var blink = function() {
+                $el.fadeOut(interval, function() {
+                    $el.html(self.generateSingleNumber());
+                    self.positionNumber($el);
+                    $el.fadeIn(interval);
+                });
+            };
+            window.setInterval(blink, interval);
+        }
+
+        $numbers.each(animateNumbers);
+        $(".numbers-wrapper").fadeTo(1000, 0.13);
+    },
 
     generateSingleNumber: function() {
-        return ((Math.random() * 200) - 100).toFixed(2);
+        var num = ((Math.random() * 200) - 100).toFixed(2);
+        return (num < 0 ? '' : '+')+num;
     },
 
     getNumberColor: function(num) {
@@ -64,7 +76,7 @@ Numbers.prototype = {
     },
 
     generateNumberDOM: function(numberType) {
-    	var self = this;
+        var self = this;
 
         var rand = self.generateSingleNumber();
         $('.numbers-wrapper').append("<div class='number "+numberType+" "+self.getNumberColor(rand)+"'>"+rand+"</div>")
@@ -72,7 +84,7 @@ Numbers.prototype = {
 
     generateNumbers: function() {
 
-    	var self = this;
+        var self = this;
         for(var type in self.numbers) {
             if(self.numbers.hasOwnProperty(type)) {
                 for(var i = 0; i < self.numbers[type].total; i++) {
@@ -83,24 +95,13 @@ Numbers.prototype = {
     },
 
     positionNumber: function($el) {
-    	var self = this;
+        var self = this;
         var xPos = Math.random() * self.availableWidth,
             yPos = Math.random() * self.availableHeight;
 
         $el.css({'top': yPos+'px', 'left': xPos+'px'});
     },
 
-    animateNumbers: function(ndx, el) {
-        var $el = $(this);
-        var interval = (Math.random() * 7000) + 777;
-        var blink = function() {
-            $el.fadeOut(interval, function() {
-                self.positionNumber($el);
-                $el.fadeIn(interval);
-            });
-        };
-        window.setInterval(blink, interval);
-    }
 };
 
-module.exports = Numbers;
+module.exports = new Numbers();

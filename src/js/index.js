@@ -6,8 +6,8 @@ var App = global.App = {
     debug:          true,
     initialized:    false,
     resizers:       [],
-    menu: require('./parts/_menu'),
-    dv: require('./pages/_datavisualization')
+    menu: require('./parts/_menu.js'),
+    dv: require('./pages/_datavisualization.js')
 };
 
 var $ = require('jquery');
