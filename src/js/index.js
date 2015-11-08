@@ -7,7 +7,8 @@ var App = global.App = {
     initialized:    false,
     resizers:       [],
     menu: require('./parts/_menu.js'),
-    dv: require('./pages/_datavisualization.js')
+    dv: require('./pages/_datavisualization.js'),
+    icons: require('./parts/_animateicons.js')
 };
 
 var $ = require('jquery');
@@ -19,6 +20,7 @@ $( document ).ready(function() {
     console.log('Eenvoud Foundetion');
     App.menu.start();
     App.dv.start();
+    App.icons.start();
     _.each(App.resizers, function(resizer) {
         resizer();
     });
