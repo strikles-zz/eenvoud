@@ -6,7 +6,9 @@
         position: relative;
 
         canvas {
+            @extend %full-fill;
             z-index: 2 !important;
+            box-sizing: border-box;
         }
 
         .numbers-wrapper {

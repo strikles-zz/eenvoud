@@ -16,6 +16,7 @@
  */
 
 var self = window;
+var $ = window.jQuery;
 
 module.exports = (function(self) {
 
@@ -38,11 +39,12 @@ module.exports = (function(self) {
 
     console.log('>>> Init');
 
-    var body = document.querySelector('body');
+    //var body = document.querySelector('.main-content');
     canvas = document.createElement('canvas');
 
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    var $content = $('.main-content');
+    canvas.height = $content.height();
+    canvas.width = $('body').width();
 
     canvas.style.position = 'absolute';
     canvas.style.top = 0;
@@ -52,7 +54,8 @@ module.exports = (function(self) {
     canvas.style.zIndex = 2;
     canvas.style.cursor = 'n-resize';
 
-    body.appendChild(canvas);
+    //body.appendChild(canvas);
+    $content.append(canvas);
 
     // Browser supports canvas?
     if (!!(capable)) {
@@ -207,7 +210,7 @@ module.exports = (function(self) {
       y: canvas.height * 0.5 - 20,
       vy: Math.random() * 10,
 
-      depth: canvas.height * 0.5
+      depth: canvas.height * 0.77
 
     });
 
@@ -220,7 +223,7 @@ module.exports = (function(self) {
       y: canvas.height * 0.5,
       vy: Math.random() * 10,
 
-      depth: canvas.height * 0.5
+      depth: canvas.height * 0.77
 
     });
 
@@ -233,7 +236,7 @@ module.exports = (function(self) {
       y: canvas.height * 0.5 + 20,
       vy: Math.random() * 10,
 
-      depth: canvas.height * 0.5
+      depth: canvas.height * 0.77
 
     });
 
