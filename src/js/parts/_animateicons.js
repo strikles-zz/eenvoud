@@ -10,20 +10,18 @@ var Icons = function(options) {
 
     this.icons = {
         ga: {
-            total: 3,
             cssClass: 'fa fa-gears'
         },
         users: {
-            total: 3,
             cssClass: 'fa fa-user'
         },
         settings: {
-            total: 3,
             cssClass: 'fa fa-wrench'
         }
     };
 
-    this.totalIcons = 9;
+    this.numIcons = 3;
+    this.totalIcons;
 
     this.$icons;
     this.availableWidth;
@@ -37,6 +35,8 @@ Icons.prototype = {
 
     init: function() {
         var self = this;
+
+        self.totalIcons = self.numIcons * Object.keys(self.icons).length;
 
         self.availableWidth = $('.main-content').width();
         self.availableHeight = $('.main-content').height();
@@ -84,7 +84,7 @@ Icons.prototype = {
     generateIcons: function() {
 
         var self = this;
-        for(var i = 0; i < 3; i++) {
+        for(var i = 0; i < self.numIcons; i++) {
             for(var type in self.icons) {
                 if(self.icons.hasOwnProperty(type)) {
                     self.generateIconDOM(type);
@@ -97,7 +97,7 @@ Icons.prototype = {
         var self = this;
 
         var radius = Math.min(self.availableWidth, self.availableHeight)/3.5,
-            yPos = (self.availableHeight/2.0) + radius*Math.sin(2.0*Math.PI*ndx/self.totalIcons) - 20,
+            yPos = (self.availableHeight/2.0) + radius*Math.sin(2.0*Math.PI*ndx/self.totalIcons),
             xPos = (self.availableWidth/2.0) + radius*Math.cos(2.0*Math.PI*ndx/self.totalIcons);
 
         console.log('', ndx, $el);

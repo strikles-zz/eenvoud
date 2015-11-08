@@ -148,11 +148,15 @@ h1:before, .h1:before, h2:before, .h2:before, h3:before, .h3:before, h4:before, 
   position: relative;
   color: $white;
   box-sizing: border-box;
+  min-height: 200px;
 
   .opaque {
     opacity: 0.6;
   }
 
+  .main-wrapper {
+      z-index: 999;
+  }
   .main-title {
     font-family: Oswald;
     text-transform: uppercase;

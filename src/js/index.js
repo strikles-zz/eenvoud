@@ -21,6 +21,10 @@ $( document ).ready(function() {
     App.menu.start();
     App.dv.start();
     App.icons.start();
+
+    if($('.page-template-template-datavisualization').length) {
+        require('./parts/_wave.js');
+    }
     _.each(App.resizers, function(resizer) {
         resizer();
     });

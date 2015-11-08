@@ -5,6 +5,10 @@
         background-size: contain;
         position: relative;
 
+        canvas {
+            z-index: 2 !important;
+        }
+
         .numbers-wrapper {
             display: none;
 
@@ -37,8 +41,8 @@
 
         .header-wrapper {
             @extend %full-fill;
-            background: url('../img/datavisualization/header.png') bottom right no-repeat;
-            background-size: contain;
+            //background: url('../img/datavisualization/header.png') bottom right no-repeat;
+            //background-size: contain;
             z-index: 1000;
         }
 
