@@ -34,11 +34,11 @@ $periodicon: 9999ms;
 
 @keyframes spinicon {
     from {
-        transform:rotate(360deg) scale(0.8);
+        transform:rotate(360deg);
         filter:blur(25px);
     }
     to {
-        transform:rotate(0deg) scale(1.2);
+        transform:rotate(0deg);
         filter:blur(0);
     }
 }
